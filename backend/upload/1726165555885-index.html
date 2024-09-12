@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+       <p> this is card Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque inventore dicta voluptates optio vel quos fugiat minus natus, nulla commodi, velit a debitis corporis repellat omnis vitae? Nobis, fugit asperiores.</p>
+    </div>
+    <h1></h1>
+    <style>
+        body{
+            display: flex;
+            width: 100%;
+            height: 100dvh;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+        p{
+            position: relative;
+            z-index: 10;
+            color: black;
+            font-size: 1.2rem;
+            font-weight: 300;
+            font-family: 'Courier New', Courier, monospace;
+            transition: all 200ms;
+            
+            
+           
+        }
+        div{
+            width: 350px;
+            height: 350px;
+            box-shadow: 1px 2px 0.5px rgba(0,0,0,.2);
+            margin: 0;
+            padding: 0;
+            border-radius: 5px;
+            transition: all 1s;
+            transform-origin: bottom left;
+            color: #fff;
+            position: relative;
+            z-index: 5;
+            overflow: hidden;
+        }
+        div::after{
+            position: absolute;
+            left: -60px;
+            bottom: -122px;
+            width: 50px;
+            height: 50px;
+            content: '';
+            background: green;
+            z-index: 1;
+            border-radius: 50%;
+            opacity: 0;
+            transform-origin: bottom left;
+            transition: all 300ms;
+        }
+        div:hover::after{
+            background: steelblue;
+            scale: 12;
+            opacity: 1;
+            z-index: 1;
+
+        }
+         div:hover p{
+            color: white;
+         }
+         h1{
+            position: absolute;
+            z-index: 200;
+            border: 4px solid rgb(243, 82, 18);
+             width: 30px;
+             height: 30px;
+             border-radius: 50%;
+            
+         }
+    </style>
+    <script>
+        const card = document.querySelector('h1');
+         document.addEventListener("mousemove",(e)=>{
+            const cardWidth = card.offsetWidth / 2;
+          const cardHeight = card.offsetHeight / 2;
+               
+            card.style.left = `${e.pageX - cardWidth}px`
+            card.style.top = `${e.pageY - cardHeight }px`
+            console.log(e.pageX)
+         })
+
+    </script>
+</body>
+</html>
