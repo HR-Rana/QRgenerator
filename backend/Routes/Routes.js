@@ -48,7 +48,7 @@ router.post("/uploadImages", upload.single("image"), async (req, res)=>{
     const reqData = req.file.filename;
     const filePath = req.file.path;
     // const title = req.body;
-    console.log(req.body);
+    console.log(reqData)
 
     try {
         if(!reqData){
@@ -74,7 +74,9 @@ router.post("/uploadImages", upload.single("image"), async (req, res)=>{
 
 router.delete("/deleteImage/:id", async (req, res)=>{
     const id = req.params.id;
-    await imageUrl.delete(id);
+    // await imageUrl.delete(id);
+    console.log(id);
+    console.log("url heading")
 });
 
 
