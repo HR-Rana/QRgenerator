@@ -53,29 +53,19 @@
                     
                     <section class="QR_Generate">
                         <div class="container  d-flex justify-content-between">
-                            <div class="col-md-5  col-sm-12">
+                            <div class="col-md-5 mx-auto my-auto col-sm-12">
                                 <span>
-                                    <h5>
-                                        Upload Something</h5>
+                                    <h3>Upload Something</h3>
+                                    <br><br>
                                 </span>
                                 <div class="QR-inputbox py-5 px-2 h-full d-flex align-items-center justify-content-center card">
                                     <div class="w-100">
                                         <form class="controls w-full"  method="POST" action="http://localhost:3000/uploadImages" enctype="multipart/form-data">
-                                            <input type="text" placeholder="File Name" class="form-control" id="text">
+                                            <!-- <input type="text" placeholder="File Name" class="form-control" id="text" required> -->
                                             <input type="file" placeholder="Paste the Url" class="form-control" name="image" id="image" required>
-                                            <input type="submit" value="Upload" class="form-control">
+                                            <input type="submit" value="Upload" class="form-control bg-primary text-white mt-3">
                                         </form>
                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                                <div class="QR-output">
-                                    
-                                    <div class="card p-5">
-                                        <img src="https://quickchart.io/qr?text=Hello world" alt="QR code">
-                                         <br>
-                                        <a href="https://quickchart.io/qr?text=Hello world" download>Download</a>
                                     </div>
                                 </div>
                             </div>
@@ -83,35 +73,6 @@
                     </section>
 
                 </div>
-                <!-- <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
-                    <section class="QR_Generate">
-                        <div class="container  d-flex justify-content-between">
-                            <div class="col-md-5  col-sm-12">
-                                <span>
-                                    <h5>Paste any Url to Generate a QR code</h5>
-                                </span>
-                                <div class="QR-inputbox py-5 px-2 h-full d-flex align-items-center justify-content-center card">
-                                    <div class="w-100">
-                                        <span class="controls w-full ">
-                                            <input type="text" placeholder="Paste the Url" class="form-control">
-                                        </span>
-                                        <button class="form-control">Generate QR</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                                <div class="QR-output">
-                                    
-                                    <div class="card p-5">
-                                        <img src="https://via.placeholder.com/300x200" alt="QR code">
-                                         <br>
-                                        <button class="py-2 outline-none">Download</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div> -->
                 <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
 
                     <section>
@@ -119,68 +80,8 @@
                             <span class="text-center pb-5">
                                 <h4>All Added files</h4><br>
                             </span>
-                           <div class="row">
-                            <div class="col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="py-5 px-2">
-                                        <img src="https://www.flaticon.com/free-icon/documentation_9746243?term=document&page=1&position=2&origin=tag&related_id=9746243" alt="">
-                                        <p>the added file goes to here.</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button class="bg-danger text-white border-none form-control">Delete</button>
-                                    </div>
-                                </div>
-                            </div><div class="col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="py-5 px-2">
-                                        <img src="https://www.flaticon.com/free-icon/documentation_9746243?term=document&page=1&position=2&origin=tag&related_id=9746243" alt="">
-                                        <p>the added file goes to here.</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button class="bg-danger text-white border-none form-control">Delete</button>
-                                    </div>
-                                </div>
-                            </div><div class="col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="py-5 px-2">
-                                        <img src="https://www.flaticon.com/free-icon/documentation_9746243?term=document&page=1&position=2&origin=tag&related_id=9746243" alt="">
-                                        <p>the added file goes to here.</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button class="bg-danger text-white border-none form-control">Delete</button>
-                                    </div>
-                                </div>
-                            </div><div class="col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="py-5 px-2">
-                                        <img src="https://www.flaticon.com/free-icon/documentation_9746243?term=document&page=1&position=2&origin=tag&related_id=9746243" alt="">
-                                        <p>the added file goes to here.</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button class="bg-danger text-white border-none form-control">Delete</button>
-                                    </div>
-                                </div>
-                            </div><div class="col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="py-5 px-2">
-                                        <img src="https://www.flaticon.com/free-icon/documentation_9746243?term=document&page=1&position=2&origin=tag&related_id=9746243" alt="">
-                                        <p>the added file goes to here.</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button class="bg-danger text-white border-none form-control">Delete</button>
-                                    </div>
-                                </div>
-                            </div><div class="col-md-4 col-sm-6">
-                                <div class="card">
-                                    <div class="py-5 px-2">
-                                        <img src="https://www.flaticon.com/free-icon/documentation_9746243?term=document&page=1&position=2&origin=tag&related_id=9746243" alt="">
-                                        <p>the added file goes to here.</p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button class="bg-danger text-white border-none form-control">Delete</button>
-                                    </div>
-                                </div>
-                            </div>
+                           <div class="row" id="img-row">
+                            
                            </div>
                         </div>
                     </section>
@@ -204,11 +105,41 @@
 
 
     <script>
+const getData =() =>{}
 
-    fetch("http://localhost:3000/allImages")
+
+            fetch("http://localhost:3000/allImages")
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                let row;
+                data.forEach((image, i)=> {
+                    const {imgName,_id, imgUrl} = image;
+                        row  += `
+                        <div class="col-md-4 col-sm-6">
+                                <div class="card">                      
+                                    <div class="p-2">
+                                        <img src="https://api.dub.co/qr?url=${imgUrl}" alt="QR-Code" class="img-fluid">
+                                    </div>
+                                    <div class="card-body">file:${imgName}</div>
+                                    <div class="card-footer d-flex justify-content-between">
+                                       <a href="https://api.dub.co/qr?url=${imgUrl}" download >Download </a>   
+                                           
+                                       <a href="/:${_id}">delete </a>   
+                                                                      
+                                </div>
+                             </div>
+                        </div>
+                    `    
+                });
+              document.getElementById("img-row").innerHTML = row;
+                console.log(row)
+
+
+            })
             .catch(error => console.log(error))
+            
+
+
 
 
     </script>

@@ -26,6 +26,10 @@ mongoose.connect(dbUrl, {
 
 
 const imageLinks = mongoose.Schema({
+    // title:{
+    //     type: 'string',
+    //     required: true
+    // },
     imgName:{
         type: String,
         required: true

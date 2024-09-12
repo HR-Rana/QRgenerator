@@ -4,8 +4,15 @@ const router = express.Router();
 const multer = require('multer');
 
 
-router.get("/allImages", (req, res)=>{
-    res.status(200).send("working successfully");
+router.get("/allImages", async (req, res)=>{
+    
+    try {
+        const images = await imageUrl.find();
+        res.status(200).json(images)
+    } catch (error) {
+        res.status(500).json(error);
+    }
+    
        
     
 })
@@ -40,7 +47,8 @@ const upload = multer({ storage: storage });
 router.post("/uploadImages", upload.single("image"), async (req, res)=>{
     const reqData = req.file.filename;
     const filePath = req.file.path;
-    console.log(req)
+    // const title = req.body;
+    console.log(req.body);
 
     try {
         if(!reqData){
@@ -48,7 +56,8 @@ router.post("/uploadImages", upload.single("image"), async (req, res)=>{
         }else{
             const saveData = await imageUrl.create({
                 imgName: reqData,
-                imgUrl: filePath
+                imgUrl: filePath,
+                // title:title,
             })
             await saveData.save();
         }
@@ -63,12 +72,9 @@ router.post("/uploadImages", upload.single("image"), async (req, res)=>{
 
 
 
-router.delete("/deleteImage/:id",  (req, res)=>{
+router.delete("/deleteImage/:id", async (req, res)=>{
     const id = req.params.id;
-    
-
-
-
+    await imageUrl.delete(id);
 });
 
 
