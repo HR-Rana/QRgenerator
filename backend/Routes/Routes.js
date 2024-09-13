@@ -46,7 +46,7 @@ const upload = multer({ storage: storage });
 
 router.post("/uploadImages", upload.single("image"), async (req, res)=>{
     const reqData = req.file.filename;
-    const filePath = req.file.path;
+    const filePath = `http://localhost:3000/${req.file.path}`;
     // const title = req.body;
     console.log(reqData)
 

@@ -32,6 +32,15 @@
             height: 250px;
             object-fit: contain;
         }
+        @media (max-width: 540px) {
+            h1{
+                font-size: 18px;
+                display: none;
+            }
+            ul li{
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -39,7 +48,7 @@
     <section>
            <div class=" px-3 bg-secondary text-white navigation py-3 d-flex justify-content-between">
             <div class="logo d-flex align-items-center justify-content-center">
-                <h3>QR Generator</h3>
+                <h3 class="">QR Generator</h3>
             </div>
             <div class="Tabs-container !text-black">
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -116,13 +125,13 @@
             .then(res => res.json())
             .then(data => {
                 data.forEach((image, i)=> {
+                    console.log(image)
                     const {imgName,_id, imgUrl} = image;
-                    console.log(imgName)
                         row  += `
                         <div class="col-md-4 col-sm-6">
                                 <div class="card">                      
                                     <div class="p-2">
-                                        <img src="https://api.qrserver.com/v1/create-qr-code/?data=${imgName}" alt="QR-Code" class="img-fluid w-100" id="qrCode">
+                                        <img src="https://api.qrserver.com/v1/create-qr-code/?data=${imgUrl}" alt="QR-Code" class="img-fluid w-100" id="qrCode">
                                     </div>
                                     <div class="card-body">file:${imgName}</div>
                                     <div class="card-footer d-flex justify-content-between">
@@ -131,34 +140,21 @@
                                 </div>
                              </div>
                         </div>
-                    `    
+                    `  
                     row ? document.getElementById("img-row").innerHTML = row : null
                 });
             })
             .catch(error => console.log(error))
             
 
-
-            
-            
-            
-            </script>
-
-     <!-- <script>
-        document.getElementById('download').addEventListener('click', function () {
-            const qrCodeImg = document.getElementById('qrCode').src;
-            const link = document.createElement('a');
-            link.href = qrCodeImg;
-            link.download = 'qrcode.png';
-            link.click();
-        });
-    </script> -->
+</script>
 
 
 
 <script>
      function deleteItem(itemId) {
-         console.log('deleting item:', itemId);
+        var ResponseData ="";
+        if (confirm("Do you want to delete?") == true) {
             fetch(`http://localhost:3000/deleteImage/${itemId}`, {
                 method: 'POST',
                 headers: {
@@ -168,11 +164,15 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data.message);
-                console.log('Remaining items:', data.items);
+                alert(data.message);
+                window.reload();
             })
             .catch(error => console.error('Error:', error));
+            console.log("QR Deleted successfully")
+        }else{
+            console.log("not deleted")
+        }
 
-            alert(itemId);
         }
 </script>
 </body>
