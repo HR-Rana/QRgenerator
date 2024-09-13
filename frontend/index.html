@@ -117,6 +117,7 @@
             .then(data => {
                 data.forEach((image, i)=> {
                     const {imgName,_id, imgUrl} = image;
+                    console.log(imgName)
                         row  += `
                         <div class="col-md-4 col-sm-6">
                                 <div class="card">                      
@@ -126,7 +127,7 @@
                                     <div class="card-body">file:${imgName}</div>
                                     <div class="card-footer d-flex justify-content-between">
                                        <button id={"download"}>download</button>
-                                       <button onclick={deleteItem('${_id}')} >delete</button>                            
+                                       <button onclick={deleteItem(${_id})} >delete</button>                            
                                 </div>
                              </div>
                         </div>
@@ -157,8 +158,9 @@
 
 <script>
      function deleteItem(itemId) {
+         console.log('deleting item:', itemId);
             fetch(`http://localhost:3000/deleteImage/${itemId}`, {
-                method: 'DELETE',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -169,6 +171,8 @@
                 console.log('Remaining items:', data.items);
             })
             .catch(error => console.error('Error:', error));
+
+            alert(itemId);
         }
 </script>
 </body>
