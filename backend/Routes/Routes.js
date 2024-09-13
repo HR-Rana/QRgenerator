@@ -72,10 +72,10 @@ router.post("/uploadImages", upload.single("image"), async (req, res)=>{
 
 
 
-router.delete("/deleteImage/:id", async (req, res)=>{
+router.post("/deleteImage/:id", async (req, res)=>{
     const id = req.params.id;
     // await imageUrl.delete(id);
-    console.log(id);
+    console.log("delete id",id);
     console.log("url heading")
 });
 
