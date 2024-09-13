@@ -111,9 +111,7 @@
 
 
     <script>
-const getData =() =>{}
-
-let row ="";
+            let row ="";
             fetch("http://localhost:3000/allImages")
             .then(res => res.json())
             .then(data => {
@@ -128,15 +126,13 @@ let row ="";
                                     <div class="card-body">file:${imgName}</div>
                                     <div class="card-footer d-flex justify-content-between">
                                        <button id={"download"}>download</button>
-                                       <button onclick={deleteItem(${_id})} >delete</button>                            
+                                       <button onclick={deleteItem('${_id}')} >delete</button>                            
                                 </div>
                              </div>
                         </div>
                     `    
                     row ? document.getElementById("img-row").innerHTML = row : null
                 });
-
-
             })
             .catch(error => console.log(error))
             
@@ -147,7 +143,7 @@ let row ="";
             
             </script>
 
-            <script>
+     <!-- <script>
         document.getElementById('download').addEventListener('click', function () {
             const qrCodeImg = document.getElementById('qrCode').src;
             const link = document.createElement('a');
@@ -155,7 +151,7 @@ let row ="";
             link.download = 'qrcode.png';
             link.click();
         });
-    </script>
+    </script> -->
 
 
 
@@ -173,8 +169,6 @@ let row ="";
                 console.log('Remaining items:', data.items);
             })
             .catch(error => console.error('Error:', error));
-
-            alert(itemId);
         }
 </script>
 </body>
