@@ -74,9 +74,19 @@ router.post("/uploadImages", upload.single("image"), async (req, res)=>{
 
 router.post("/deleteImage/:id", async (req, res)=>{
     const id = req.params.id;
-    // await imageUrl.delete(id);
-    console.log(id);
-    console.log("url heading")
+    try {
+        await imageUrl.deleteOne({_id:id});
+        res.status(200).json({
+            status:"Success",
+            message:"Image deleted successfully"
+        })
+
+        console.log(id, "image deleted successfully")
+
+    } catch (error) {
+        res.status(500).send(error);
+    }
+
 });
 
 
