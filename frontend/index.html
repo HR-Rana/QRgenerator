@@ -32,12 +32,12 @@
             object-fit: contain;
         }
         @media (max-width: 540px) {
-            h1{
+            h3{
                 font-size: 18px;
-                display: none;
             }
-            ul li{
-                font-size: 14px;
+           .Tabs-container ul li{
+                font-size: 12px;
+                padding: 0;
             }
         }
     </style>
@@ -75,10 +75,10 @@
                                 </span>
                                 <div class="QR-inputbox py-5 px-2 h-full d-flex align-items-center justify-content-center card">
                                     <div class="w-100">
-                                        <form class="controls w-full"  method="POST" action="http://localhost:3000/uploadImages" enctype="multipart/form-data">
-                                            <!-- <input type="text" placeholder="File Name" class="form-control" id="text" required> -->
+                                        <form class="controls w-full" action="http://localhost:3000/uploadImages"  method="POST"   enctype="multipart/form-data" >
+                                            <input type="text" placeholder="File Name" class="form-control" name="name" id="text" required>
                                             <input type="file" placeholder="Paste the Url" class="form-control" name="image" id="image" required>
-                                            <input type="submit" value="Upload" class="form-control bg-primary text-white mt-3">
+                                            <input type="submit" value="Upload File" class="form-control bg-primary text-white mt-3">
                                         </form>
                                        
                                     </div>
@@ -93,8 +93,9 @@
                     <section>
                         <div class="added-files-cotnainer col-10 offset-1">
                             <span class="text-center pb-5">
-                                <h4>All Added files</h4><br>
+                                <h4>All Added files <span id="images"></span></h4><br>
                             </span>
+                            
                            <div class="row" id="img-row">
                             
                            </div>
@@ -124,7 +125,7 @@
             .then(res => res.json())
             .then(data => {
                 data.forEach((image, i)=> {
-                    console.log(image)
+                    console.log(i)
                     const {imgName,_id, imgUrl} = image;
                         row  += `
                         <div class="col-md-4 col-sm-6">
@@ -140,7 +141,8 @@
                              </div>
                         </div>
                     `  
-                    row ? document.getElementById("img-row").innerHTML = row : null
+                    row ? document.getElementById("img-row").innerHTML = row : null;
+                    document.getElementById("images").innerHTML = image.length;
                 });
             })
             .catch(error => console.log(error))
@@ -151,6 +153,8 @@
 
 
 <script>
+
+
      function deleteItem(itemId) {
         var ResponseData ="";
         if (confirm("Do you want to delete?") == true) {

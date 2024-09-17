@@ -2,7 +2,34 @@ const express = require('express');
 const imageUrl = require('../models/imageModel');
 const router = express.Router();
 const multer = require('multer');
+require("dotenv").config();
+const Cloudinary = require('cloudinary').v2;
 
+
+
+Cloudinary.config({
+    cloud_name: process.env.NAME,
+    api_key: process.env.API,
+    api_secret: process.env.SECRET
+})
+
+
+
+// console.log("the api kyes",process.env.CLOUD_NAME, process.env.CLOUD_APIKYE, process.env.CLOUD_API_SECRET)
+
+
+
+
+
+
+
+
+
+
+
+
+
+// getting all qr data from database
 
 router.get("/allImages", async (req, res)=>{
     
@@ -28,42 +55,34 @@ const storage = multer.diskStorage({
         cb(null, Date.now() + '-' + file.originalname)
     }
 });
-
+  
 const upload = multer({ storage: storage });
 
 
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//       cb(null, './upload/')
-//     },
-//     filename: function (req, file, cb) {
-//       cb(null, Date.now() + "-" + file.originalname)
-//     }
-//   })
-  
-//   const upload = multer({ storage: storage })
 
 
 router.post("/uploadImages", upload.single("image"), async (req, res)=>{
     const reqData = req.file.filename;
-    const filePath = `http://localhost:3000/${req.file.path}`;
+    const filePath =req.file.path;
     // const title = req.body;
-    console.log(reqData)
+    console.log(reqData, filePath)
+
 
     try {
-        if(!reqData){
-            return res.status(400).send("No file uploaded");
-        }else{
-            const saveData = await imageUrl.create({
-                imgName: reqData,
-                imgUrl: filePath,
-                // title:title,
-            })
-            await saveData.save();
+        if(reqData){
+            const ResultURl = await Cloudinary.uploader.upload(filePath);
+            // const saveData = await imageUrl.create({
+            //     imgName: reqData,
+            //     imgUrl: ResultURl.url,
+            //     // imgUrl: filePath,
+            //     // title:title,  
+            // })
+            console.log("the url", ResultURl.url)
+            // res.status(200).json(saveData);
         }
-        res.status(200).send(saveData);
+      
     } catch (error) {
-        res.status(500).send(error);
+        res.status(500).json(error.message);
     }
     
 
