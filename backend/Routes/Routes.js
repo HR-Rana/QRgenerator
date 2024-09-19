@@ -8,9 +8,9 @@ const Cloudinary = require('cloudinary').v2;
 
 
 Cloudinary.config({
-    cloud_name: process.env.NAME,
-    api_key: process.env.API,
-    api_secret: process.env.SECRET
+    cloud_name: "dluihnhff",
+    api_key: '576717877318924',
+    api_secret: '5OB93M0m2Ow_Nw3t-Jz-mxi5YUg'
 })
 
 
@@ -70,15 +70,19 @@ router.post("/uploadImages", upload.single("image"), async (req, res)=>{
 
     try {
         if(reqData){
-            const ResultURl = await Cloudinary.uploader.upload(filePath);
-            // const saveData = await imageUrl.create({
-            //     imgName: reqData,
-            //     imgUrl: ResultURl.url,
-            //     // imgUrl: filePath,
-            //     // title:title,  
-            // })
-            console.log("the url", ResultURl.url)
-            // res.status(200).json(saveData);
+            var ResultURl = await Cloudinary.uploader.upload(filePath, (err, res)=>{
+                if (err) {
+                    console.log(err)
+                    return res.status(500).json(err.message)
+                }
+                console.log("image uploaded successfully")
+                console.log("the iamge url", ResultURl.url)
+            });
+            const saveData = await imageUrl.create({
+                imgName: reqData,
+                imgUrl: ResultURl.url,
+            })
+            res.status(200).json(saveData);
         }
       
     } catch (error) {

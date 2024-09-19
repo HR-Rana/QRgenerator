@@ -125,7 +125,7 @@
             .then(res => res.json())
             .then(data => {
                 data.forEach((image, i)=> {
-                    console.log(i)
+                    console.log(image)
                     const {imgName,_id, imgUrl} = image;
                         row  += `
                         <div class="col-md-4 col-sm-6">
@@ -133,16 +133,15 @@
                                     <div class="p-2">
                                         <img src="https://api.qrserver.com/v1/create-qr-code/?data=${imgUrl}" alt="QR-Code" class="img-fluid w-100" id="qrCode">
                                     </div>
-                                    <div class="card-body">file:${imgName}</div>
                                     <div class="card-footer d-flex justify-content-between">
-                                       <button id={"download"}>download</button>
+                                      <a href=${imgUrl} download=${imgUrl} id="download-tag"> <button id={"download"}>download</button></a>
                                        <button onclick={deleteItem('${_id}')} >delete</button>                            
                                 </div>
                              </div>
                         </div>
                     `  
                     row ? document.getElementById("img-row").innerHTML = row : null;
-                    document.getElementById("images").innerHTML = image.length;
+                    document.getElementById("images").innerText = image.length;
                 });
             })
             .catch(error => console.log(error))
@@ -153,6 +152,15 @@
 
 
 <script>
+
+    const atag = document.getElementById("download-tag");
+
+    atag.addEventListener("click", (e) =>{
+        e.preventDefault();
+    })
+
+
+
 
 
      function deleteItem(itemId) {
